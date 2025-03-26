@@ -2,7 +2,7 @@
 - 👀 I’m interested in multiple coding languages.
 - 🌱 I’m currently learning C++ and python.
 - 💞️ I’m looking to collaborate on multiple projects.
-- 📫 You can reach me through my email aasthasuhani25@gmail.com .
+- 📫 You can reach me through my email aasthasuhani06@gmail.com .
 - 😄 Pronouns: she/her
 - Socials:www.linkedin.com/in/aasthasuhani1729
 
