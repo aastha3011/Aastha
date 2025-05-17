@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenInnovate</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,21 +15,22 @@
         }
 
         body {
-            background-color: #f9fafb;
-            color: #333;
+            background-color: #000000;
+            color: #000000;
             height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Header styling */
+        /* App Header */
         header {
-            background-color: #fff;
+            border-bottom: 1px solid rgb(66, 66, 66);
+            background-color: #000000;
             padding: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .app-title {
@@ -38,41 +39,36 @@
             color: #7c3aed;
         }
 
-        .header-icons {
+        .header-actions {
             display: flex;
             gap: 12px;
             align-items: center;
         }
 
-        .header-icon {
+        .icon-button {
+            padding: 8px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 8px;
         }
 
-        .auth-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .login-btn {
+        .button-primary {
             background-color: #7c3aed;
             color: white;
-            border: none;
-            padding: 4px 12px;
+            padding: 8px 12px;
             border-radius: 8px;
             font-size: 14px;
+            border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 4px;
         }
 
-        .signup-btn {
+        /* .button-secondary {
             border: 1px solid #7c3aed;
             color: #7c3aed;
-            background: none;
+            background-color: transparent;
             padding: 4px 12px;
             border-radius: 8px;
             font-size: 14px;
@@ -80,107 +76,27 @@
             display: flex;
             align-items: center;
             gap: 4px;
-        }
+        } */
 
-        .profile-pic {
-            width: 32px;
-            height: 32px;
-            background-color: #e5e7eb;
-            border-radius: 50%;
-            display: none;
-        }
-
-        /* Main Content styling */
+        /* Main Content */
         main {
             flex: 1;
             overflow-y: auto;
+            padding-bottom: 60px;
+            /* Space for navigation */
         }
 
-        /* Navigation styling */
-        nav {
-            background-color: #fff;
-            border-top: 1px solid #e5e7eb;
-            display: flex;
-            justify-content: space-around;
-            padding: 12px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .nav-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: none;
-            background: none;
-            color: #6b7280;
-            cursor: pointer;
-        }
-
-        .nav-btn.active {
-            color: #7c3aed;
-        }
-
-        .nav-btn span {
-            font-size: 12px;
-            margin-top: 4px;
-        }
-
-        /* Tab Content styling */
-        .tab-content {
-            padding-bottom: 64px;
-        }
-
-        /* Stories section styling */
-        .stories-section {
-            padding: 16px;
-            display: flex;
-            overflow-x: auto;
-            gap: 16px;
-            padding-bottom: 8px;
-        }
-
-        .story-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        .story-circle {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 4px;
-        }
-
-        .story-add {
-            background-color: #f3e8ff;
-            border: 2px solid #7c3aed;
-            color: #7c3aed;
-        }
-
-        .story-regular {
-            background-color: #e5e7eb;
-        }
-
-        .story-label {
-            font-size: 12px;
-        }
-
-        /* Create post styling */
+        /* Create Post Section */
         .create-post {
             padding: 8px 16px;
-            background-color: #fff;
+            background-color: rgb(0, 0, 0);
             margin-bottom: 8px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-top: 8px;
+            /* Added top margin since we removed stories section */
         }
 
-        .post-input-btn {
+        .create-post-button {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -188,19 +104,25 @@
             border: 1px solid #d1d5db;
             border-radius: 9999px;
             padding: 8px 16px;
-            text-align: left;
             background: none;
             color: #6b7280;
             font-size: 14px;
+            text-align: left;
             cursor: pointer;
         }
 
-        /* Post styling */
+        /* Post Feed */
+        .post-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
         .post {
-            background-color: #fff;
+            color: white;
+            background-color: rgb(0, 0, 0);
             padding: 16px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .post-header {
@@ -212,17 +134,19 @@
         .post-avatar {
             width: 40px;
             height: 40px;
-            background-color: #e5e7eb;
             border-radius: 50%;
-            margin-right: 12px;
+            background-color: #f3f4f6;
         }
 
-        .post-user-info h3 {
+        .post-user-info {
+            margin-left: 12px;
+        }
+
+        .post-username {
             font-weight: 500;
-            font-size: 16px;
         }
 
-        .post-user-info p {
+        .post-meta {
             font-size: 12px;
             color: #6b7280;
         }
@@ -253,12 +177,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            color: #6b7280;
             padding-top: 8px;
             border-top: 1px solid #f3f4f6;
-            color: #6b7280;
         }
 
-        .action-btn {
+        .post-action-button {
             display: flex;
             align-items: center;
             gap: 4px;
@@ -268,393 +192,55 @@
             cursor: pointer;
         }
 
-        /* Floating Action Button styling */
-        .fab {
+        /* Navigation Bar */
+        nav {
+            background-color: rgb(0, 0, 0);
+            border-top: 1px solid #373737;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px;
             position: fixed;
-            bottom: 80px;
-            right: 16px;
-            background-color: #7c3aed;
-            color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: none;
-            cursor: pointer;
+            bottom: 0;
+            width: 100%;
         }
 
-        Events tab styling
-        .filter-bar {
-            padding: 16px;
-            background-color: #fff;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        .nav-item {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            position: sticky;
-            top: 0;
+            text-decoration: none;
+            color: #6b7280;
+            font-size: 12px;
         }
 
-        .location {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .location i {
+        .nav-item.active {
             color: #7c3aed;
         }
 
-        .filter-btn {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 9999px;
-            padding: 4px 12px;
-            background: none;
-            cursor: pointer;
-        }
-
-        .categories {
-            padding: 12px 16px;
-            overflow-x: auto;
-        }
-
-        .categories-container {
-            display: flex;
-            gap: 8px;
-        }
-
-        .category-btn {
-            padding: 4px 16px;
-            border-radius: 9999px;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .category-btn.active {
-            background-color: #7c3aed;
-            color: white;
-        }
-
-        .category-btn:not(.active) {
-            background-color: #f3f4f6;
-            color: #4b5563;
-        }
-
-        .event-list {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .event-card {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .event-image {
-            height: 160px;
-            background-color: #f3f4f6;
-            position: relative;
-        }
-
-        .event-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .event-badge {
-            position: absolute;
-            bottom: 8px;
-            left: 8px;
-            background-color: #7c3aed;
-            color: white;
-            font-size: 12px;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .green-badge {
-            background-color: #059669;
-        }
-
-        .event-details {
-            padding: 16px;
-        }
-
-        .event-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-        }
-
-        .event-title {
-            font-weight: 500;
+        .nav-icon {
             margin-bottom: 4px;
         }
 
-        .event-date {
-            font-size: 14px;
-            color: #6b7280;
-        }
-
-        .favorite-btn {
-            background-color: #f3e8ff;
-            color: #7c3aed;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .event-location {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #6b7280;
-            margin-bottom: 12px;
-        }
-
-        .event-location i {
-            margin-right: 4px;
-        }
-
-        .event-description {
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .register-btn {
-            background-color: #7c3aed;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 8px;
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        /* Reels tab styling */
-        .reels-container {
-            height: 100%;
-            background-color: black;
-            position: relative;
-        }
-
-        .reel-content {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6b7280;
-        }
-
-        .reel-controls {
-            position: absolute;
-            bottom: 80px;
-            right: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .reel-action {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .reel-count {
-            color: white;
-            font-size: 14px;
-        }
-
-        .reel-info {
-            position: absolute;
-            bottom: 80px;
-            left: 16px;
-            max-width: 280px;
-        }
-
-        .reel-username {
-            color: white;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .reel-description {
-            color: white;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .reel-tag {
-            display: inline-block;
-            background-color: #7c3aed;
-            color: white;
-            font-size: 12px;
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-
-        .moderation-note {
-            position: absolute;
-            top: 16px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .moderation-badge {
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            font-size: 12px;
-            padding: 4px 12px;
-            border-radius: 9999px;
-        }
-
-        .reel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            border: none;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .reel-nav:hover {
-            opacity: 1;
-        }
-
-        .nav-prev {
-            left: 16px;
-        }
-
-        .nav-next {
-            right: 16px;
-        }
-
-        /* Female tab styling */
-        .locked-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            padding: 24px;
-            text-align: center;
-        }
-
-        .lock-icon {
-            width: 64px;
-            height: 64px;
-            background-color: #f3e8ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #7c3aed;
-            margin-bottom: 16px;
-        }
-
-        .locked-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .locked-description {
-            color: #6b7280;
-            margin-bottom: 24px;
-        }
-
-        .verify-btn {
-            background-color: #7c3aed;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .info-box {
-            margin-top: 24px;
-            background-color: #f3e8ff;
-            padding: 16px;
-            border-radius: 8px;
-            max-width: 320px;
-        }
-
-        .info-title {
-            font-weight: 500;
-            color: #5b21b6;
-            margin-bottom: 8px;
-        }
-
-        .info-text {
-            font-size: 14px;
-            color: #4c1d95;
-        }
-
-        /* Modals styling */
-        .modal-overlay {
+        /* Create Post Modal */
+        .modal {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             padding: 16px;
             z-index: 1000;
-            display: none;
         }
 
-        .modal {
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
             background-color: white;
             border-radius: 8px;
-            max-width: 480px;
+            max-width: 500px;
             width: 100%;
             padding: 24px;
         }
@@ -671,7 +257,7 @@
             font-weight: 600;
         }
 
-        .close-btn {
+        .close-button {
             background: none;
             border: none;
             color: #6b7280;
@@ -679,53 +265,48 @@
             font-size: 18px;
         }
 
-        .modal-content {
-            margin-bottom: 16px;
-        }
-
-        textarea.post-textarea {
+        .post-textarea {
             width: 100%;
-            height: 128px;
             border: 1px solid #d1d5db;
             border-radius: 8px;
             padding: 12px;
+            height: 128px;
             margin-bottom: 16px;
             resize: none;
+            font-size: 16px;
         }
 
-        .modal-actions {
+        .modal-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .media-btn {
+        .media-button {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #7c3aed;
-            border: 1px solid #7c3aed;
-            background: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+        }
+
+        .circle-button {
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid #7c3aed;
+            color: #7c3aed;
+            background: none;
             cursor: pointer;
         }
 
-        .media-label {
-            font-size: 14px;
-            color: #6b7280;
-        }
-
-        .post-btn {
+        .post-button {
             background-color: #7c3aed;
             color: white;
-            border: none;
             padding: 8px 16px;
             border-radius: 8px;
+            border: none;
             cursor: pointer;
         }
 
@@ -735,119 +316,33 @@
             margin-top: 16px;
         }
 
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 4px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-        }
-
-        .form-button {
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 80px;
+            right: 16px;
             background-color: #7c3aed;
             color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 500;
-            width: 100%;
             cursor: pointer;
+            z-index: 100;
         }
 
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 16px 0;
-        }
-
-        .divider-line {
-            flex: 1;
-            height: 1px;
-            background-color: #d1d5db;
-        }
-
-        .divider-text {
-            padding: 0 12px;
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .alt-action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            border: 1px solid #d1d5db;
-            background: none;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .terms-text {
-            font-size: 12px;
-            color: #6b7280;
-            text-align: center;
-        }
-
-        .verification-steps {
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-
-        .steps-title {
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .step-list {
-            list-style-type: none;
-        }
-
-        .step-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .step-icon {
-            color: #7c3aed;
-        }
-
-        .verification-button {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-
-        /* File input styling */
+        /* File Input Styles */
         .file-input-container {
-            position: relative;
+            display: none;
             margin-top: 16px;
         }
 
-        .file-input {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
+        .file-input-container.show {
+            display: block;
         }
 
         .file-input-label {
@@ -858,208 +353,553 @@
             border: 2px dashed #d1d5db;
             border-radius: 8px;
             padding: 16px;
-            text-align: center;
             cursor: pointer;
+            margin-bottom: 16px;
         }
 
-        .upload-icon {
-            font-size: 24px;
-            color: #7c3aed;
-            margin-bottom: 8px;
-        }
-
-        .upload-text {
-            font-size: 14px;
-            color: #6b7280;
-        }
-
-        .upload-hint {
-            font-size: 12px;
-            color: #9ca3af;
-            margin-top: 4px;
-        }
-
-        /* Preview styling */
-        .preview-container {
-            margin-top: 16px;
+        .file-input {
             display: none;
         }
 
-        .preview-item {
-            position: relative;
-            margin-bottom: 8px;
+        .preview-container {
+            margin-top: 8px;
+            width: 100%;
+            max-height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
         }
 
         .preview-image {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
+            max-height: 200px;
+            object-fit: contain;
+            display: none;
         }
 
         .preview-video {
             width: 100%;
-            height: 200px;
-            border-radius: 8px;
+            max-height: 200px;
+            display: none;
         }
 
-        .remove-preview {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            width: 24px;
-            height: 24px;
+        .post-avatar img {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            cursor: pointer;
+            object-fit: cover;
         }
     </style>
 </head>
+
 <body>
     <!-- App Header -->
     <header>
-        <h1 class="app-title">OpenInnovate</h1>
-        <div class="header-icons">
-            <button class="header-icon" id="search-btn">
+
+        <div class="logo-title-wrapper" style="display: flex; align-items: center; gap: 12px;">
+            <!-- Circular Logo -->
+            <img src="logo.png" alt="Logo" style="width: 60px; height: 60px; border-radius: 50%;">
+
+            <!-- App Title -->
+            <h1 class="app-title">Socionet</h1>
+        </div>
+        <div class="header-actions">
+            <button class="icon-button">
                 <i class="fas fa-search"></i>
             </button>
-            <button class="header-icon" id="notifications-btn">
+            <button class="icon-button">
                 <i class="fas fa-bell"></i>
             </button>
-            <div class="auth-buttons" id="auth-buttons">
-                <button class="login-btn" id="login-btn">
+            <div class="login-buttons">
+                <button class="button-primary" id="loginButton">
                     <i class="fas fa-sign-in-alt"></i>
-                    <span>Login</span>
+                    <span>Login /SignUp</span>
                 </button>
-                <button class="signup-btn" id="signup-btn">
+                <!-- <button class="button-secondary" id="signupButton">
                     <i class="fas fa-user-plus"></i>
                     <span>Signup</span>
-                </button>
+                </button> -->
             </div>
-            <div class="profile-pic" id="profile-pic"></div>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main>
-
-            <!-- Create Post Section -->
-            <div class="create-post">
-                <button class="post-input-btn" id="create-post-btn">
-                    <i class="fas fa-user"></i>
-                    <span>Share your innovative ideas...</span>
-                </button>
-            </div>
-
-            <!-- Post Feed -->
-            <div class="posts-container">
-                <!-- Post 1 -->
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-avatar"></div>
-                        <div class="post-user-info">
-                            <h3>Sarah Johnson</h3>
-                            <p>Sustainability Innovator • 2h ago</p>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <p>Just launched my community garden automation project! Using IoT sensors to optimize water usage and track plant growth. Looking for collaborators who can help scale this to more neighborhoods.</p>
-                    </div>
-                    <div class="post-image">
-                        <img src="https://cals.cornell.edu/sites/default/files/styles/full_width_gallery/public/2024-08/hackathon-1.jpg?h=790be497&itok=6683MeN2" alt="Garden Automation Project">
-                    </div>
-                    <div class="post-actions">
-                        <button class="action-btn">
-                            <i class="fas fa-heart"></i>
-                            <span>142</span>
-                        </button>
-                        <button class="action-btn">
-                            <i class="fas fa-comment"></i>
-                            <span>38</span>
-                        </button>
-                        <button class="action-btn">
-                            <i class="fas fa-share"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Post 2 -->
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-avatar"></div>
-                        <div class="post-user-info">
-                            <h3>Akash Patel</h3>
-                            <p>Tech Enthusiast • 5h ago</p>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <p>Our team has developed an open-source AI tool that helps small businesses identify sustainability opportunities. We're hosting a workshop next week to teach implementation - see the Events tab for details!</p>
-                    </div>
-                    <div class="post-actions">
-                        <button class="action-btn">
-                            <i class="fas fa-heart"></i>
-                            <span>89</span>
-                        </button>
-                        <button class="action-btn">
-                            <i class="fas fa-comment"></i>
-                            <span>24</span>
-                        </button>
-                        <button class="action-btn">
-                            <i class="fas fa-share"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Floating Action Button -->
-            <button class="fab" id="fab-btn">
-                <i class="fas fa-plus"></i>
+    <main id="mainContent">
+        <!-- Create Post Section -->
+        <div class="create-post">
+            <button class="create-post-button" id="createPostBtn">
+                <i class="fas fa-user"></i>
+                <span>Share your innovative ideas...</span>
             </button>
         </div>
 
-        <!-- Events Tab -->
-        <div class="tab-content" id="events-tab" style="display: none;">
-            <!-- Filter Bar -->
-            <div class="filter-bar">
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Bangalore</span>
-                </div>
-                <button class="filter-btn">
-                    <i class="fas fa-filter"></i>
-                    <span>Filters</span>
-                </button>
-            </div>
 
-            <!-- Categories -->
-            <div class="categories">
-                <div class="categories-container">
-                    <button class="category-btn active">All</button>
-                    <button class="category-btn">Tech</button>
-                    <button class="category-btn">Fitness</button>
-                    <button class="category-btn">Art</button>
-                    <button class="category-btn">Music</button>
-                    <button class="category-btn">Education</button>
-                    <button class="category-btn">Networking</button>
-                </div>
-            </div>
-
-            <!-- Event List -->
-            <div class="event-list">
-                <!-- Event 1 -->
-                <div class="event-card">
-                    <div class="event-image">
-                        <img src="" alt="Tech Hackathon">
-                        <div class="event-badge">Free</div>
+        <!-- Post Feed -->
+        <div class="post-feed">
+            <!-- Example Post 1 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-avatar">
+                        <img src="https://images.pexels.com/photos/943084/pexels-photo-943084.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                            alt="Sarah Johnson">
                     </div>
-                    <div class="event-details">
-                        <div class="event-header">
-                            <div>
-                                <h3 class="event-title">Tech Innovation Hackathon</h3>
-  
+                    <div class="post-user-info">
+                        <p class="post-username">Sarah Johnson</p>
+                        <p class="post-meta">Sustainability Innovator • 2h ago</p>
+                    </div>
+                </div>
+                <p class="post-content">Just launched my community garden automation project! Using IoT sensors to
+                    optimize water usage and track plant growth. Looking for collaborators who can help scale this to
+                    more neighborhoods.</p>
+                <div class="post-image">
+                    <img src="https://s7ap1.scene7.com/is/image/incredibleindia/national-rose-garden-delhi-1-attr-hero?qlt=82&ts=1727352071295"
+                        alt="Garden Automation Project">
+                </div>
+                <div class="post-actions">
+                    <button class="post-action-button">
+                        <i class="fas fa-heart"></i>
+                        <span>142</span>
+                    </button>
+                    <button class="post-action-button">
+                        <i class="fas fa-comment"></i>
+                        <span>38</span>
+                    </button>
+                    <button class="post-action-button">
+                        <i class="fas fa-share"></i>
+                    </button>
+                </div>
+            </div>
 
+            <!-- Example Post 2 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-avatar">
+                        <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            alt="Akash Patel">
+                    </div>
+                    <div class="post-user-info">
+                        <p class="post-username">Akash Patel</p>
+                        <p class="post-meta">Tech Enthusiast • 5h ago</p>
+                    </div>
+                </div>
+                <p class="post-content">Our team has developed an open-source AI tool that helps small businesses
+                    identify sustainability opportunities. We're hosting a workshop next week to teach implementation -
+                    see the Events tab for details!</p>
+                <div class="post-image">
+                    <img src="https://i0.wp.com/aiireland.ie/wp-content/uploads/2024/02/Blog-Photos-AI-Irl-2-3.png?fit=1200%2C675&ssl=1"
+                        alt="Garden Automation Project">
+                </div>
+                <div class="post-actions">
+                    <button class="post-action-button">
+                        <i class="fas fa-heart"></i>
+                        <span>89</span>
+                    </button>
+                    <button class="post-action-button">
+                        <i class="fas fa-comment"></i>
+                        <span>24</span>
+                    </button>
+                    <button class="post-action-button">
+                        <i class="fas fa-share"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Example Post 3 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-avatar">
+                        <img src="https://images.pexels.com/photos/2402777/pexels-photo-2402777.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            alt="Ravi Mehra">
+                    </div>
+                    <div class="post-user-info">
+                        <p class="post-username">Ravi Mehra</p>
+                        <p class="post-meta">Marathon Organizer • 1d ago</p>
+                    </div>
+                </div>
+                <p class="post-content">🏃‍♂️ Join us this Sunday for the GreenRun 10K Marathon! Promoting clean air and
+                    sustainable fitness. Free T-shirts and hydration kits for all participants. #MarathonForChange</p>
+                <div class="post-image">
+                    <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_960/https://gorunningtours.com/wp-content/uploads/2022/07/nyc_west_side_10_k_960x640_1.jpg"
+                        alt="GreenRun Marathon">
+                </div>
+                <div class="post-actions">
+                    <button class="post-action-button"><i class="fas fa-heart"></i><span>210</span></button>
+                    <button class="post-action-button"><i class="fas fa-comment"></i><span>53</span></button>
+                    <button class="post-action-button"><i class="fas fa-share"></i></button>
+                </div>
+            </div>
+
+            <!-- Example Post 4 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-avatar">
+                        <img src="https://images.pexels.com/photos/7125216/pexels-photo-7125216.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            alt="Neha Verma">
+                    </div>
+                    <div class="post-user-info">
+                        <p class="post-username">Neha Verma</p>
+                        <p class="post-meta">AI Researcher • 3h ago</p>
+                    </div>
+                </div>
+                <p class="post-content">Launched my AI-powered resume analyzer that helps freshers match with top
+                    internships! Feedback welcomed. Open-sourcing the repo next week. #AIForGood #OpenInnovation</p>
+                <div class="post-image">
+                    <img src="https://cdn.prod.website-files.com/635c591478332fd4db25d46e/67febf39e70f6eef95b3d504_How%20Careerflow%E2%80%99s%20AI%20Resume%20Analysis%20Tool%20Helps%20You%20Perfect%20That%20Resume.webp"
+                        alt="AI Resume Analyzer">
+                </div>
+                <div class="post-actions">
+                    <button class="post-action-button"><i class="fas fa-heart"></i><span>176</span></button>
+                    <button class="post-action-button"><i class="fas fa-comment"></i><span>34</span></button>
+                    <button class="post-action-button"><i class="fas fa-share"></i></button>
+                </div>
+            </div>
+
+            <!-- Example Post 5 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-avatar">
+                        <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            alt="Anjali Gupta">
+                    </div>
+                    <div class="post-user-info">
+                        <p class="post-username">Anjali Gupta</p>
+                        <p class="post-meta">Yoga Coach • 6h ago</p>
+                    </div>
+                </div>
+                <p class="post-content">🌸 Hosting a free rooftop sunrise yoga session this Saturday in Bangalore.
+                    Beginners welcome! Let's stretch and refresh together. #Wellness #YogaCommunity</p>
+                <div class="post-image">
+                    <img src="https://images.pexels.com/photos/317157/pexels-photo-317157.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        alt="Sunrise Yoga">
+                </div>
+                <div class="post-actions">
+                    <button class="post-action-button"><i class="fas fa-heart"></i><span>92</span></button>
+                    <button class="post-action-button"><i class="fas fa-comment"></i><span>15</span></button>
+                    <button class="post-action-button"><i class="fas fa-share"></i></button>
+                </div>
+            </div>
+
+            <!-- Example Post 6 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-avatar">
+                        <img src="https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            alt="Dev Sharma">
+                    </div>
+                    <div class="post-user-info">
+                        <p class="post-username">Dev Sharma</p>
+                        <p class="post-meta">Hackathon Mentor • 9h ago</p>
+                    </div>
+                </div>
+                <p class="post-content">🚀 Calling all coders! Our 48-hour Open Hackathon kicks off this weekend. Theme:
+                    "Tech for Social Impact". Cash prizes, internships, and mentorship opportunities available. Register
+                    now via Events tab!</p>
+                <div class="post-image">
+                    <img src="https://images.openai.com/thumbnails/e71f904d6a524a0414abd1b3bcdef857.jpeg"
+                        alt="Hackathon Event">
+                </div>
+                <div class="post-actions">
+                    <button class="post-action-button"><i class="fas fa-heart"></i><span>150</span></button>
+                    <button class="post-action-button"><i class="fas fa-comment"></i><span>28</span></button>
+                    <button class="post-action-button"><i class="fas fa-share"></i></button>
+                </div>
+            </div>
+
+            <!-- Example Post 7 -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-avatar">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            alt="Meera Sinha">
+                    </div>
+                    <div class="post-user-info">
+                        <p class="post-username">Meera Sinha</p>
+                        <p class="post-meta">Women’s Advocate • 12h ago</p>
+                    </div>
+                </div>
+                <p class="post-content">💪 Excited to join the Women in Tech Meetup this Friday! Sharing stories,
+                    networking, and building confidence in a safe space. Let's lift each other up. #SheLeads
+                    #WomenInTech</p>
+                <div class="post-image">
+                    <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        alt="Women in Tech Meetup">
+                </div>
+                <div class="post-actions">
+                    <button class="post-action-button"><i class="fas fa-heart"></i><span>198</span></button>
+                    <button class="post-action-button"><i class="fas fa-comment"></i><span>41</span></button>
+                    <button class="post-action-button"><i class="fas fa-share"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Floating Action Button -->
+        <button class="fab" id="fabButton">
+            <i class="fas fa-plus"></i>
+        </button>
+    </main>
+
+    <!-- Navigation Tabs -->
+    <nav>
+        <a href="#" class="nav-item active" data-tab="community">
+            <i class="fas fa-home nav-icon"></i>
+            <span>Community</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="events">
+            <i class="fas fa-calendar nav-icon"></i>
+            <span>Events</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="reels">
+            <i class="fas fa-film nav-icon"></i>
+            <span>Spotlight</span>
+        </a>
+        <a href="#" class="nav-item" data-tab="female" style="color: rgb(217, 51, 106);">
+            <i class="fas fa-users nav-icon"></i>
+            <span>SheVerse</span>
+        </a>
+    </nav>
+
+    <!-- Create Post Modal -->
+    <div class="modal" id="createPostModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Create New Post</h2>
+                <button class="close-button" id="closeModalBtn">&times;</button>
+            </div>
+            <textarea class="post-textarea" placeholder="Share your innovation or idea..."></textarea>
+
+            <!-- File input container -->
+            <div class="file-input-container" id="fileInputContainer">
+                <label class="file-input-label">
+                    <i class="fas fa-cloud-upload-alt fa-2x"></i>
+                    <span>Click to upload image or video</span>
+                    <input type="file" class="file-input" id="fileInput" accept="image/*,video/*">
+                </label>
+                <div class="preview-container">
+                    <img src="#" class="preview-image" id="previewImage">
+                    <video class="preview-video" id="previewVideo" controls></video>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="media-button">
+                    <button class="circle-button" id="toggleMediaButton">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <span class="text-small text-gray-500">Add media</span>
+                </div>
+                <button class="post-button">Post</button>
+            </div>
+            <p class="modal-note">Note: All posts are AI-moderated to ensure quality and relevance to innovation and
+                community building.</p>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Login to OpenInnovate</h2>
+                <button class="close-button" id="closeLoginModalBtn">&times;</button>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 4px; font-size: 14px; font-weight: 500;">Email</label>
+                <input type="email" placeholder="your@email.com"
+                    style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px;">
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 4px; font-size: 14px; font-weight: 500;">Password</label>
+                <input type="password" placeholder="••••••••"
+                    style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px;">
+            </div>
+
+            <button class="post-button" style="width: 100%; margin-bottom: 16px;">Login</button>
+
+            <div style="display: flex; align-items: center; margin: 16px 0;">
+                <div style="flex: 1; height: 1px; background-color: #d1d5db;"></div>
+                <span style="padding: 0 12px; color: #6b7280; font-size: 14px;">or</span>
+                <div style="flex: 1; height: 1px; background-color: #d1d5db;"></div>
+            </div>
+
+            <button
+                style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; background: none; margin-bottom: 16px;"
+                id="switchToSignupBtn">
+                <i class="fas fa-user-plus"></i>
+                <span>Create New Account</span>
+            </button>
+
+            <p style="font-size: 12px; color: #6b7280; text-align: center;">
+                By continuing, you agree to our Terms of Service and Privacy Policy
+            </p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Create an Account</h2>
+                <button class="close-button" id="closeSignupModalBtn">&times;</button>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 4px; font-size: 14px; font-weight: 500;">Full Name</label>
+                <input type="text" placeholder="Your Name"
+                    style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px;">
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 4px; font-size: 14px; font-weight: 500;">Email</label>
+                <input type="email" placeholder="your@email.com"
+                    style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px;">
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 4px; font-size: 14px; font-weight: 500;">Password</label>
+                <input type="password" placeholder="••••••••"
+                    style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px;">
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 4px; font-size: 14px; font-weight: 500;">Confirm
+                    Password</label>
+                <input type="password" placeholder="••••••••"
+                    style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px;">
+            </div>
+
+            <button class="post-button" style="width: 100%; margin-bottom: 16px;">Create Account</button>
+
+            <div style="display: flex; align-items: center; margin: 16px 0;">
+                <div style="flex: 1; height: 1px; background-color: #d1d5db;"></div>
+                <span style="padding: 0 12px; color: #6b7280; font-size: 14px;">or</span>
+                <div style="flex: 1; height: 1px; background-color: #d1d5db;"></div>
+            </div>
+
+            <button
+                style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; background: none; margin-bottom: 16px;"
+                id="switchToLoginBtn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Login to Existing Account</span>
+            </button>
+
+            <p style="font-size: 12px; color: #6b7280; text-align: center;">
+                By signing up, you agree to our Terms of Service and Privacy Policy
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Modal Toggle Functions
+        const createPostModal = document.getElementById('createPostModal');
+        const createPostBtn = document.getElementById('createPostBtn');
+        const fabButton = document.getElementById('fabButton');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        const loginModal = document.getElementById('loginModal');
+        const loginButton = document.getElementById('loginButton');
+        const closeLoginModalBtn = document.getElementById('closeLoginModalBtn');
+
+        const signupModal = document.getElementById('signupModal');
+        const signupButton = document.getElementById('signupButton');
+        const closeSignupModalBtn = document.getElementById('closeSignupModalBtn');
+
+        const switchToSignupBtn = document.getElementById('switchToSignupBtn');
+        const switchToLoginBtn = document.getElementById('switchToLoginBtn');
+
+        // File input functionality
+        const toggleMediaButton = document.getElementById('toggleMediaButton');
+        const fileInputContainer = document.getElementById('fileInputContainer');
+        const fileInput = document.getElementById('fileInput');
+        const previewImage = document.getElementById('previewImage');
+        const previewVideo = document.getElementById('previewVideo');
+
+        // Navigation tabs
+        const navItems = document.querySelectorAll('.nav-item');
+
+        // Modal Open/Close Functions
+        function openModal(modal) {
+            modal.classList.add('open');
+        }
+
+        function closeModal(modal) {
+            modal.classList.remove('open');
+        }
+
+        // Event Listeners
+        createPostBtn.addEventListener('click', () => openModal(createPostModal));
+        fabButton.addEventListener('click', () => openModal(createPostModal));
+        closeModalBtn.addEventListener('click', () => closeModal(createPostModal));
+
+        loginButton.addEventListener('click', () => openModal(loginModal));
+        closeLoginModalBtn.addEventListener('click', () => closeModal(loginModal));
+
+        signupButton.addEventListener('click', () => openModal(signupModal));
+        closeSignupModalBtn.addEventListener('click', () => closeModal(signupModal));
+
+        switchToSignupBtn.addEventListener('click', () => {
+            closeModal(loginModal);
+            openModal(signupModal);
+        });
+
+        switchToLoginBtn.addEventListener('click', () => {
+            closeModal(signupModal);
+            openModal(loginModal);
+        });
+
+        // Toggle media input
+        toggleMediaButton.addEventListener('click', () => {
+            fileInputContainer.classList.toggle('show');
+        });
+
+        // File input preview
+        fileInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (!file) return;
+
+            const fileType = file.type;
+            const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            const validVideoTypes = ['video/mp4', 'video/webm', 'video/ogg'];
+
+            if (validImageTypes.includes(fileType)) {
+                previewImage.src = URL.createObjectURL(file);
+                previewImage.style.display = 'block';
+                previewVideo.style.display = 'none';
+                previewVideo.src = '';
+            } else if (validVideoTypes.includes(fileType)) {
+                previewVideo.src = URL.createObjectURL(file);
+                previewVideo.style.display = 'block';
+                previewImage.style.display = 'none';
+                previewImage.src = '';
+            }
+        });
+
+        // Navigation tab handling
+        navItems.forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove active class from all items
+                navItems.forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+
+                // Add active class to clicked item
+                this.classList.add('active');
+
+                // Here you would normally load the corresponding tab content
+                // For demonstration purposes, we'll just log the tab name
+                console.log(`Switched to ${this.dataset.tab} tab`);
+            });
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === createPostModal) closeModal(createPostModal);
+            if (e.target === loginModal) closeModal(loginModal);
+            if (e.target === signupModal) closeModal(signupModal);
+        });
+    </script>
+</body>
+
+</html>
